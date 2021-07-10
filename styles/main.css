@@ -1,0 +1,281 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    font-family: 'Poppins', 'Arial', 'Helvetica', sans-serif;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    counter-reset: score;
+}
+.phone{
+    position: relative;
+    border-radius: 26px;
+    height: 600px;
+    width: 300px;
+    background: #CCEFFF;
+    background-image: url('../img/grass-background.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: bottom;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+}
+#start-screen{
+    position: absolute;
+    border-radius: 26px;
+    z-index: 11;
+    background: #CCEFFF;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-image: url('../img/game-logo.png');
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position-x: center;
+    background-position-y: 35px;
+    visibility: hidden;
+}
+#start-screen.active{
+    visibility: visible;
+}
+#start-dog{
+    position: absolute;
+    z-index: 11;
+    height: 253px;
+    width: 228px;
+    bottom: 108px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+ 
+    animation-name: breath;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 35;
+}
+button{
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: 53px;
+    width: 80%;
+    color: white;
+    background-color: #DF7357;
+    font-size: 2rem;
+    border-style: none;
+    border-radius: 38px;
+    cursor: pointer;
+
+    animation-name: click-on-me;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 8;
+}
+button:hover{
+    background-color: #DA5D3E;
+}
+#game-logo{
+    background-image: url('../img/game-logo.png');
+    background-size: contain;
+    height: 70px;
+    width: 100%;
+}
+.layer-1{
+    position: absolute;
+    z-index: 1;
+    height: 470px;
+    width: 80px;
+    bottom: 0;
+    left: 60px;
+    background-image: url('../img/puppy-front.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    animation-name: jump;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+.layer-2{
+    position: absolute;
+    z-index: 2;
+    height: 470px;
+    width: 80px;
+    bottom: 0;
+    right: 40px;
+    background-image: url('../img/puppy-front.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    animation-name: jump;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+.layer-3{
+    position: absolute;
+    z-index: 3;
+    height: 400px;
+    width: 270px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-image: url('../img/wall.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.layer-4{
+    position: absolute;
+    z-index: 4;
+    height: 340px;
+    width: 95px;
+    bottom: 0;
+    left: 30px;
+    background-image: url('../img/puppy-front.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    animation-name: largeJump;
+    animation-duration: 1.68s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+.layer-5{
+    position: absolute;
+    z-index: 5;
+    height: 250px;
+    width: 200px;
+    bottom: 0;
+    left: 0px;
+    background-image: url('../img/left-wall.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0px 0px 0px 26px;
+}
+.layer-6{
+    position: absolute;
+    z-index: 6;
+}
+.layer-7{
+    position: absolute;
+    z-index: 7;
+}
+.layer-8{
+    position: absolute;
+    z-index: 8;
+    height: 168px;
+    width: 130px;
+    bottom: 0;
+    right: 35px;
+    background-image: url('../img/face-puppy.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-clip: content-box;
+
+    animation-name: jump;
+    animation-duration: 7s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+.layer-9{
+    position: absolute;
+    z-index: 9;
+    height: 110px;
+    width: 170px;
+    bottom: 0;
+    right: 0px;
+    background-image: url('');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.layer-10{
+    position: absolute;
+    z-index: 10;
+    right: 0;
+    margin: 0 auto;
+    width: 270px;
+    height: 100px;
+    background-image: url('../img/right-wall.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    bottom: 0;
+    border-radius: 0px 0px 26px 0px;
+}
+
+/* ---------- */
+/* Animations */
+/* ---------- */
+@keyframes breath{
+    0%{
+        height: 253px;
+    }
+    5%{
+        height: 258px;
+    }
+    25%{
+        height: 262px;
+    }
+    100%{
+        height: 253px;
+    }
+}
+@keyframes jump{
+    0%{
+        bottom: 0;
+    }
+    25%{
+        bottom: -80px;
+    }
+    100%{
+        bottom: 0;
+    }
+}
+@keyframes largeJump{
+    0%{
+        bottom: 0;
+    }
+    25%{
+        bottom: -95px;
+    }
+    100%{
+        bottom: 0;
+    }
+}
+input[type=checkbox]{
+        appearance: none;
+        cursor: pointer;
+        height: 50px;
+        width: 80px;
+        margin: 0;
+        position: relative;
+        z-index: 2;
+}
+input[type=checkbox]:focus{
+    appearance: none;
+    outline: none;
+}
+input:checked{
+    counter-increment: score;
+}
+.total-counter{
+    position: absolute;
+    margin: 0 auto;
+    text-align: center;
+    top: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: black;
+}
+.total-counter::after{
+    content: counter(score);
+}
